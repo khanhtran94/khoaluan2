@@ -1,0 +1,151 @@
+\chapter{Convolutional Nerual Networks}
+\label{chap:chap4}
+
+\section{Tổng quan}
+\textit{Convolutional Neural Network }(CNNs – Mạng nơ-ron tích chập) là một trong những mô hình Deep Learning tiên tiến giúp cho chúng ta xây dựng được những hệ thống thông minh với độ chính xác cao. Trong khóa luận này, tôi sẽ trình bày về  Convolution (tích chập) cũng như xây dựng mô hình CNNs cho bài toán nhận dạng chữ viết tay trong tiếng Nhật (Image Classification).\par
+Lấy cảm hứng từ xử lý ảnh nên đầu vào và các lớp của CNNs có dạng như một bức ảnh chứ không có dạng vector như Neural Networks thông thường. Cụ thể, một bức ảnh sau khi số hoá có dạng \textit{width $\times$ height $\times$ depth} (width: số lượng điểm ảnh trên chiều rộng, height: số lượng điểm ảnh trên chiều cao, depth: số lượng kênh chẳng hạn như RGB có 3 kênh đại diện cho mức độ của 3 màu Đỏ, Lục, Lam). Mô hình được mô tả ở Hình \ref{fig:conv}
+
+\begin{center}
+\begin{figure}[H]
+\label{fig:conv}
+\begin{center}
+\subfloat[mạng nơron thông thường]
+  {\includegraphics[width=.3\linewidth]{chap4/image/architectureNNs}}
+\subfloat[mạng nơron tích chập]
+  {\includegraphics[width=.3\linewidth]{chap4/image/architectureCNN}}
+\caption{Kiến trúc hai mạng}
+\end{center}
+
+\end{figure}
+\end{center}
+
+Một mạng CNNs đơn giản có ba lớp chính: lớp tích chập (\textit{convolutional layer}), lớp giảm số chiều (\textit{pooling layer}), lớp fully-connected. Các lớp convolutional và lớp pooling được xếp xen kẽ nhau Hình \ref{fig:convNetArch}.
+\begin{center}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=0.2]{chap4/image/convnet.jpeg}
+	\end{center}
+	\caption{ví dụ về kiến trúc của ConvNets}
+	
+\label{fig:convNetArch}
+\end{figure}
+\end{center}
+\section{Bộ lọc và cửa sổ trượt}
+Trước khi đi đến chi tiết các lớp, chúng ta cần hiểu \textit{bộ lọc (filter)} là gì, \textit{cửa sổ trượt (sliding window)} là gì.
+\subsection{Bộ lọc - filter}
+Như tôi đã trình bày ở phần trên, kích thước của đầu vào đã thay đổi thành dạng khối. Vì thế kích thước của trọng số cũng được thay đổi thành dạng khối để phù hợp với hình dạng của đầu vào và nó còn được gọi là \textit{filter} hoặc \textit{kennel}, kí hiệu là $k$.  Ví dụ như Hình \ref{fig:filter}, ma trận I là ma trận đầu vào, ma trận K là filter và ma trận I*K là ma trận kết quả (được trình bày ở phần sau).
+\begin{center}
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[scale=1.2]{chap4/image/minhHoaTichChap.png}
+	\end{center}
+	\caption{Bộ lọc - filter}
+	\label{fig:filter}
+\end{figure}
+\end{center}
+Kích thước của các filter thường là $3\times3$, $5\times5$, $7\times7$  hay thường được viết gọn là $f=3,~f=5~ \text{hoặc} ~f=7$. Chú ý rằng chiều sâu của filter luôn luôn bằng chiều sâu của đầu vào.
+\subsection{Cửa sổ trượt - sliding window}
+\textit{Cửa sổ trượt (sliding window)} là ta chọn một cửa sổ có kích thước nhỏ hơn kích thước đầu vào và trượt cửa sổ đó trên đầu vào theo chiều ngang và chiều dọc. Các bước trượt là khoảng cách mà ta dịch chuyển filter trên đầu vào và đó gọi là \textit{stride}, ký hiệu là $s$. Ví dụ như Hình \ref{fig:slidingwindow}, ta có đầu vào kích thước là $5\times5$, cửa sổ có kích thước là $3\times3$ và tại mỗi bước trượt cửa sổ dịch chuyển đi một đơn vị, do đó stride bằng 1.
+\begin{center}
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[scale=1]{chap4/image/slidingwindow.jpg}
+	\end{center}
+	\caption{Sliding window}
+	\label{fig:slidingwindow}
+\end{figure}
+\end{center}
+
+\section{Lớp tích chập - Convolutional layer}
+Convolution layer là khối cốt lõi, cơ bản của ConvNets, lớp này chủ yếu nặng về việc tính toán. Lớp này chính là nơi thể hiện tư tưởng ban đầu của mạng nơron tích chập. Thay vì kết nối toàn bộ điểm ảnh, lớp này sẽ sử dụng bộ lọc (\textit{filter}) áp vào một vùng trong ảnh và tiến hành tính tích chập giữa bộ filter và giá trị điểm ảnh trong vùng cục bộ đó,  vùng này ta gọi là \textit{receptive filter}. Sau đó ta dùng sliding window để trượt filter và tiến hành tích chập tại mỗi vùng ta trượt đến. Tôi sẽ trình bày chi tiết thông qua Hình  \ref{fig:tinhtoanConv}.
+
+\begin{figure}[htp]
+
+\subfloat[\label{fig:slide1_1}]
+  {\includegraphics[width=.3\linewidth]{chap4/image/slide1_1.png}}\hfill
+\subfloat[\label{fig:slide1_2}]
+  {\includegraphics[width=.3\linewidth]{chap4/image/slide1_2.png}}\hfill
+\subfloat[\label{fig:slide1_3}]
+  {\includegraphics[width=.3\linewidth]{chap4/image/slide1_3.png}}\\
+\subfloat[\label{fig:slide2_1}]
+  {\includegraphics[width=.3\linewidth]{chap4/image/slide2_1.png}}\hfill
+\subfloat[\label{fig:slide2_2}]
+  {\includegraphics[width=.3\linewidth]{chap4/image/slide2_2.png}}\hfill
+\subfloat[\label{fig:slide2_3}]
+  {\includegraphics[width=.3\linewidth]{chap4/image/slide2_3.png}}
+\caption{Tính toán trong lớp tích chập}
+\label{fig:tinhtoanConv}
+\end{figure}
+
+Theo Hình \ref{fig:tinhtoanConv} ta có kích thước đầu vào là $7 \times 7\times 3$, stride bằng 2, kích thước filter là  $2\times 3\times 3 \times 3$ với 2 là số \textit{channel} (số chanel sẽ là chiều sâu output chúng ta mong muốn). Tại Hình \ref{fig:slide1_1} ta  thực hiện phép tính... tương ứng giữa receptive filter, $filter ~W0$ tại tất cả các độ sâu, kết quả được cộng thêm $bias$ rồi lưu vào ma trận output vị trí đầu tiên của đầu ra. Sau đó ta thực hiện cách tính toán trên kết hợp sliding window với stride bằng 2 và filter là $filter W0$, kết quả ta thu được là ma trận output thứ nhất, các Hình \ref{fig:slide1_1}, \ref{fig:slide1_2}, \ref{fig:slide1_3} mô tả giai đoạn này. Và tương tự như trên ta thực hiện với $filter ~W1$ theo Hình \ref{fig:slide2_1}, \ref{fig:slide2_2}, \ref{fig:slide2_3} ta thu được kết quả là ma trận thứ hai tại output. Như vậy nếu ta có càng nhiều channel thì chiều sâu output của chúng ta càng lớn. \par
+
+Nếu như đầu ta chỉ tính trên kích thước đầu vào thì với filter $3\times 3$ và stride bằng 2 thì ta chỉ trượt được hai lần và đến hàng, cột thứ 5 của đầu vào còn giá trị tại hàng, cột thứ 6, 7 sẽ không được tính. Vì thế chúng ta thêm vào ma trận đầu vào các hàng và cột đối xứng với giá trị bằng 0 để không ảnh hưởng đến đầu vào mà khi đó ta sẽ quét được hết các giá trị của đầu vào. Cách này được gọi là \textit{zero padding}. Như ở ví dụ trên ta thấy đầu vào được bao quanh bởi các số 0 và kích thước tăng thành $8 \times 8$, đó là ta áp dụng zero padding với p=1.\par
+
+Ta có công thức để tính toán kích thước đầu ra như sau:
+\begin{itemize}
+	\item Kích thước đầu vào \textbf{$W_1$} x \textbf{$H_1$} x \textbf{$D_1$} (rộng x cao x sâu)
+	\item Kích thước của filter \textbf{$F$}
+	\item Số channel \textbf{$K$}
+	\item Tốc độ trượt \textbf{$S$}
+	\item Giá trị của zero-padding \textbf{$P$}
+	\item Kích thước đầu ra \textbf{$W_2$} x \textbf{$H_2$} x \textbf{$D_2$}:
+	\begin{itemize}
+		\item[+]  \textbf{$W_2 = (W_1 - F+ 2P)/S +1$}
+		\item[+] \textbf{$H_2 = (H_1 - F+ 2P)/S +1$}
+		\item[+] \textbf{$D_2 = K$}
+	\end{itemize}	 
+\end{itemize}	
+
+\begin{center}
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[scale=0.2]{chap4/image/slide1_1.png}
+	\end{center}
+	\caption{Ví dụ về tính toán kích thước đầu ra}
+	\label{fig:minhhoatichchap2}
+\end{figure}
+\end{center}
+
+Giả sử ta có thông số như hình \ref{fig:minhhoatichchap2} với kích thước đầo vào là $7\times7\times3$ tương đương $W=H=7,~ D_1=3$;stride $S=3$; kích thước filter là $2\times 3\times 3 \times 3$ hay $F=3$ và số channel $K=2$. Theo công thức ta tính được $(W_1 - F+ 2P)/S$ không phải là số nguyên do đó ta cần thêm padding để giá trị này là số nguyên. Ta chọn $P=1$ vì $(7-3+2\times 1)/3 +1$ là số nguyên. Như vậy ta tính được kích thước đầu ra sẽ là $3\times3\times2$. \par
+Một phần quan trọng của layer này đó là hàm activation, hàm này được tính với đầu vào là kết quả sau khi thực hiện tích chập. Và ReLU thường được chọn là hàm activation do tính đơn giản của nó. Nhiệm vụ của nó là chuyển toàn bộ giá trị âm trong kết quả sau khi tích chập thành 0. Ý nghĩa của cách cài đặt này chính là tạo nên tính phi tuyến cho mô hình. 
+\section{Lớp giảm số chiều -  pooling layer}
+Lớp này thường được chèn giữa các lớp convolutional với nhau hoặc sau một tập lớp convolutional. Nó có vai trò giảm kích thước dữ liệu. Với một bức ảnh kích thước lớn qua nhiều lớp Pooling sẽ được thu nhỏ lại tuy nhiên vẫn giữ được những đặc trưng cần cho việc nhận dạng (thông qua cách lấy mẫu) . Việc giảm kích thước dữ liệu sẽ làm giảm lượng tham số, tăng hiệu quả tính toán và góp phần kiểm soát hiện tượng quá khớp (overfitting).\\
+
+
+\begin{center}
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[scale=0.5]{chap4/image/poolEx.jpeg}
+	\end{center}
+	\caption{Minh họa giảm chiều}
+	\label{fig:pool}
+\end{figure}
+\end{center}
+\textbf{Cách thức hoạt động:}
+Lớp này sử dụng một cửa sổ trượt quét qua toàn bộ ảnh dữ liệu, mỗi lần trượt theo một bước trượt (stride) cho trước. Khác với lớp Convolutional, lớp Pooling không tính tích chập mà tiến hành lấy mẫu (subsampling). Khi cửa sổ trượt trên ảnh, chỉ có một giá trị được xem là giá trị đại diện cho thông tin ảnh tại vùng đó (giá trị mẫu) được giữ lại. Các phương thức lấy phổ biến trong lớp Pooling là MaxPooling (lấy giá trị lớn nhất), MinPooling (lấy giá trị nhỏ nhất) và AveragePooling (lấy giá trị trung bình).\\
+
+Xét một ảnh có kích thước 32x32 và lớp Pooling sử dụng filter có kích thước 2x2 với bước trượt stride = 2, phương pháp sử dụng là MaxPooling. Filter sẽ lần lượt duyệt qua ảnh, với mỗi lần duyệt chỉ có giá trị lớn nhất trong 4 giá trị nằm trong vùng cửa sổ 2x2 của filter được giữ lại và đưa ra đầu ra. Như vậy sau khi qua lớp Pooling, ảnh sẽ giảm kích thước xuống còn 16x16 (kích thước mỗi chiều giảm 2 lần). Ví dụ như ta có ma trận như hình \ref{fig:poolExample}, mỗi màu tương ứng với một lần trượt có kích thước filter là 2x2 và stride =2, khi đó ta sẽ được kết quả như ma trận bên phải.
+\begin{center}
+\begin{figure}[htp]
+	\begin{center}
+		\includegraphics[scale=0.5]{chap4/image/maxpoolEx.jpeg}
+	\end{center}
+	\caption{Minh họa maxpool}
+	\label{fig:poolExample}
+\end{figure}
+\end{center}
+Ta cũng rút ra được công thức tính kích thước đầu ra cho lớp này tương tự với lớp convolutional.
+\begin{itemize}
+	\item Kích thước đầu vào \textbf{$W_1$} x \textbf{$H_1$} x \textbf{$D_1$} (rộng x cao x sâu),
+	\item Kích thước của filter \textbf{$F$},	
+	\item Tốc độ trượt \textbf{$S$}
+	\item Kích thước đầu ra \textbf{$W_2$} x \textbf{$H_2$} x \textbf{$D_2$}:
+	\begin{itemize}
+		\item  \textbf{$W_2 = (W_1 - F)/S +1$}
+		\item  \textbf{$H_2 = (H_1 - F)/S +1$}
+		\item \textbf{$D_2 = D_1$}
+	\end{itemize}	 
+	\item Chú ý rằng chúng ta không thường xuyên sử dụng $zero-padding$ cho lớp này
+\end{itemize}
+\section{Lớp FC (fully-connected layer)}
+Lớp này tương tự với lớp trong mạng nơron truyền thẳng, các giá trị ảnh được liên kết đầy đủ vào node trong lớp tiếp theo. Sau khi ảnh được xử lý và rút trích đặc trưng từ các lớp trước đó, dữ liệu ảnh sẽ không còn quá lớn so với mô hình truyền thẳng nên ta có thể sử dụng mô hình truyền thẳng để tiến hành nhận dạng. Nhìn chung, lớp fully-connected đóng vai trò như một mô hình phân lớp và tiến hành dựa trên dữ liệu đã được xử lý ở các lớp trước đó.
