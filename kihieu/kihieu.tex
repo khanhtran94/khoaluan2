@@ -27,22 +27,28 @@ $\nabla_\textbf{x}f$ & Gradient của hàm f theo vector \textbf{x}   \\
 
 \begin{table}[]
 
-\caption{Ký Hiệu cho phần CNNs}
+\caption{Ký hiệu riêng tại phần mạng nơron}
 \label{my-label}
 \renewcommand{\arraystretch}{2}
 \hspace*{20mm}
 \begin{tabular}{p{3cm} p{10cm} }
 Ký hiệu & Ý nghĩa\\
 \hline
-$\textbf{x}^{(i)}$ 	& Dữ liệu thứ i của đầu vào (input)\\
-$\textbf{X}$ 	& Ma trận dữ liệu đầu vào với $\textbf{x}^{(i)} $ là dòng thứ i trong ma trận $\textbf{X}_i$ \\
-
+$\textbf{X}$ 	& Tập dữ liệu (quan sát) đầu vào \\
+$\textbf{x}_{(i)}$ 	& Dữ liệu thứ i của đầu vào \\
+$\textbf{y}$	& Vector label\\
+$y_i$ 	& Label của dữ liệu thứ i\\
 $\textbf{w}$ & Vector trọng số (weights) \\
 $\textbf{W}$ & Ma trận trọng số\\
-
+$L$ 	& Số lượng layer\\
 $l_i$ & Layer thứ i\\
-$y_i$ & label của dữ liệu thứ i\\
-$\widehat{\textbf{y}}$ & đầu ra ở lớp output (đầu ra dự đoán - predict)\\
+$J$		& Hàm mất mát\\ 
+$\widehat{\textbf{Y}}$ & Đầu ra dự đoán cho tập dữ liệu \textbf{X} \\
+$\widehat{\textbf{y}}_i$ & Đầu ra dự đoán cho dữ liệu $\textbf{x}_{i}$ \\
+ReLu	& Rectified linear unit \\
+CNNs 	& Convolutional neural networks\\
+Conv 	& Convolutional layer\\
+FC	& Full-connected layer
 
 
 \end{tabular}
