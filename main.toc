@@ -42,17 +42,16 @@
 \contentsline {section}{\numberline {2.10}Overfitting}{24}{section.2.10}
 \contentsline {subsection}{\numberline {2.10.1}T\IeC {\h \ocircumflex }ng quan}{24}{subsection.2.10.1}
 \contentsline {subsection}{\numberline {2.10.2}M\IeC {\'\ocircumflex }i li\IeC {\^e}n h\IeC {\d \ecircumflex } gi\IeC {\~\uhorn }a overfitting v\IeC {\`a} gi\IeC {\'a} tr\IeC {\d i} h\IeC {\`a}m m\IeC {\'a}t m\IeC {\'a}t}{25}{subsection.2.10.2}
-\contentsline {subsection}{\numberline {2.10.3}Regularization}{25}{subsection.2.10.3}
+\contentsline {subsection}{\numberline {2.10.3}Regularization}{26}{subsection.2.10.3}
 \contentsline {subsubsection}{\numberline {2.10.3.1}Early stopping}{26}{subsubsection.2.10.3.1}
 \contentsline {subsubsection}{\numberline {2.10.3.2}Th\IeC {\^e}m s\IeC {\'\ocircumflex } h\IeC {\d a}ng v\IeC {\`a}o h\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{26}{subsubsection.2.10.3.2}
-\contentsline {subsubsection}{\numberline {2.10.3.3}Drop-out}{26}{subsubsection.2.10.3.3}
-\contentsline {chapter}{\numberline {3}Convolutional Nerual Networks}{28}{chapter.3}
-\contentsline {section}{\numberline {3.1}T\IeC {\h \ocircumflex }ng quan}{28}{section.3.1}
-\contentsline {section}{\numberline {3.2}B\IeC {\d \ocircumflex } l\IeC {\d o}c v\IeC {\`a} c\IeC {\h \uhorn }a s\IeC {\h \ocircumflex } tr\IeC {\uhorn }\IeC {\d \ohorn }t}{29}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}B\IeC {\d \ocircumflex } l\IeC {\d o}c - filter}{29}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}C\IeC {\h \uhorn }a s\IeC {\h \ocircumflex } tr\IeC {\uhorn }\IeC {\d \ohorn }t - sliding window}{29}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}L\IeC {\'\ohorn }p t\IeC {\'\i }ch ch\IeC {\d \acircumflex }p - Convolutional layer}{30}{section.3.3}
-\contentsline {section}{\numberline {3.4}L\IeC {\'\ohorn }p gi\IeC {\h a}m s\IeC {\'\ocircumflex } chi\IeC {\`\ecircumflex }u - pooling layer}{31}{section.3.4}
-\contentsline {section}{\numberline {3.5}L\IeC {\'\ohorn }p Fully-Connected (Fully-Connected layer)}{33}{section.3.5}
-\contentsline {section}{\numberline {3.6}T\IeC {\h \ocircumflex }ng k\IeC {\'\ecircumflex }t}{33}{section.3.6}
-\contentsline {section}{\numberline {3.7}c\IeC {\^a}u h\IeC {\h o}i}{33}{section.3.7}
+\contentsline {subsubsection}{\numberline {2.10.3.3}Drop-out}{27}{subsubsection.2.10.3.3}
+\contentsline {chapter}{\numberline {3}Convolutional Nerual Networks}{29}{chapter.3}
+\contentsline {section}{\numberline {3.1}T\IeC {\h \ocircumflex }ng quan}{29}{section.3.1}
+\contentsline {section}{\numberline {3.2}B\IeC {\d \ocircumflex } l\IeC {\d o}c v\IeC {\`a} c\IeC {\h \uhorn }a s\IeC {\h \ocircumflex } tr\IeC {\uhorn }\IeC {\d \ohorn }t}{30}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}B\IeC {\d \ocircumflex } l\IeC {\d o}c - filter}{30}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}C\IeC {\h \uhorn }a s\IeC {\h \ocircumflex } tr\IeC {\uhorn }\IeC {\d \ohorn }t - sliding window}{30}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}L\IeC {\'\ohorn }p t\IeC {\'\i }ch ch\IeC {\d \acircumflex }p - Convolutional layer}{31}{section.3.3}
+\contentsline {section}{\numberline {3.4}L\IeC {\'\ohorn }p gi\IeC {\h a}m s\IeC {\'\ocircumflex } chi\IeC {\`\ecircumflex }u - pooling layer}{32}{section.3.4}
+\contentsline {section}{\numberline {3.5}L\IeC {\'\ohorn }p Fully-Connected (Fully-Connected layer)}{34}{section.3.5}
+\contentsline {section}{\numberline {3.6}T\IeC {\h \ocircumflex }ng k\IeC {\'\ecircumflex }t}{34}{section.3.6}

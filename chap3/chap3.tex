@@ -439,7 +439,7 @@ Truyền ngược là Backpropagation, là một từ viết tắt cho "backward
 \FOR {$i=1;i\le N;i=i+1 $}
 \STATE $\widehat{\textbf{y}} = \textbf{a}^{(l)}= f(\textbf{x}_{i},\textbf{W}_{i},\textbf{b}_{i})$
 
-\STATE	$\textbf{e}^{(L)} = \frac{\partial J(\widehat{\textbf{y}},\textbf{y}_{i}) }{\partial \widehat{\textbf{y}}} \frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(L)}}$
+\STATE	$\textbf{e}^{(L)} = \frac{\partial J(\widehat{\textbf{W}}}{\partial \textbf{z}^{(L)}}$
 
 \STATE $\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}_j} = \textbf{e}^{(L)} \frac{\partial \textbf{z}^{(L)}}{\partial \textbf{w}^{(L)}_j} = \textbf{a}^{(L-1)}_{j}\textbf{e}^{(L)}$ , \textit{với mỗi $j$; $j =1,\ldots, m;$} m là số units trong layer L \\
 	\FOR {$k=L-1;k \ge 1;k++$}
@@ -470,7 +470,30 @@ Tiếp tục ví dụ với cấu trúc mạng nơ-ron như Hình \ref{fig:baito
 	\item[] $\widehat{\textbf{y}}_{1\times 3} = \frac{\exp({\textbf{z}^{(2)}})}{\sum^{3}_{j=1}{\exp({\textbf{z}^{(2)}_j})}}$.
 
 \end{itemize}
-Để thực hiện thuật toán backpropagation có nghĩa là chúng ta đi tìm các giá trị sau: $\frac{\partial J_i(\textbf{W})}{\partial \textbf{W}^{(2)}},\frac{\partial J_i(\textbf{W})}{\partial \textbf{W}^{(1)}}$. Vì ta sử dụng hàm activation ở layer cuối là softmax vì thế ta có hàm mất mát là biểu thức \ref{eq:cost1}. Tính $\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}} $
+Để thực hiện thuật toán backpropagation có nghĩa là chúng ta đi tìm các giá trị sau: $\frac{\partial J_i(\textbf{W})}{\partial \textbf{W}^{(2)}},\frac{\partial J_i(\textbf{W})}{\partial \textbf{W}^{(1)}}$. Vì ta sử dụng hàm activation ở layer cuối là softmax vì thế ta có hàm mất mát là được biểu diễn theo biểu thức \ref{eq:cost2} với $J(\textbf{W})=\sum^{C}_{s=1} y_{s}{ \log \widehat{y}_{s}}$. Theo thuật toán ta cần tính $\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}} $ tương đương với đi tìm $\textbf{e}^{L}$. Trước tiên ta sẽ đi tính phần tử một phần tử $j$ trong đó.
+
+\begin{equation}
+\begin{split}
+e_j^{(L)} &= \frac{\partial J(\textbf{W}) }{\partial \textbf{z}_j^{(L)}} \\
+&=-\sum^{C}_{s=1} y_{s}\frac{ \log \widehat{y}_{s}}{\partial \textbf{z}_j^{(L)}} \\
+&=-\sum^{C}_{s=1} y_s \frac{1}{\widehat{y}_s}\frac{\partial \widehat{y}_s}{\partial \textbf{z}^L_j}\\
+& = - y_{j}\frac{\sum^C_{k=1}\exp{(z^{(L)}_k)}}{\exp{(z^{(L)}_j)}} \frac{\exp(z^{(L)}_j) \sum^C_{k=1}\exp(z^{(L)}_k) - (\exp(z^{(L)}_{j}))^2}{\left(\sum^C_{k=1}\exp(z^{(L)}_k)\right)^2}\\
+&~~ - \sum^C_{s\neq j} y_s \frac{1}{\widehat{y}_s}  \frac{0\sum^C_{s=1}\exp(z^{(L)}_s) - \exp(z^{(L)}_{s}\exp(z^{(L)}_{j}} {\left(\sum^C_{k=1}\exp(z^{(L)}_k)\right)^2}\\
+&= -y_{j}\left(1-\frac{\exp(z^{(L)}_j)}{\sum^C_{k=1}\exp(z^{(L)}_k)}\right) - \sum^C_{s\neq j} y_s \frac{1}{\widehat{y}_s}\frac{\left(-\exp(z^{(L)}_{s})\exp(z^{(L)}_{j})\right)} {\left(\sum^C_{k=1}\exp(z^{(L)}_k)\right)^2} \\
+& = -y_{j} \left( 1-\widehat{y}_j \right) +  \sum^C_{s\neq j}y_s \frac{1}{\widehat{y}_s}	(\widehat{y}_s	\widehat{y}_j)\\
+& = \widehat{y}_j\left(\sum_{s=1}^C   y_s\right) -y_{j}\\
+& = \widehat{y}_j - y_j ~~~~~~\textit{do đầu ra thực tế dạng one-hot nên tổng của nó luôn bằng 1}
+\end{split}
+\end{equation}
+Do đó ta có
+\begin{equation}
+\label{eq:back_gra1}
+\begin{split}
+\textbf{e}^{L} & = \widehat{\textbf{y}} - \textbf{y}\\
+\frac{\partial J(\textbf{W})}{\partial \textbf{W}^{L}}& = \textbf{a}^{L-1}[e_1,e_2,\ldots,e_C]=\textbf{a}^{L-1}\textbf{e}^{T}
+\end{split}
+\end{equation}
+Nếu ta tính theo hàm mất mát đã được khai triển ở biểu thức \ref{eq:cost1} thì việc đạo hàm khá đơn giản.
 \begin{equation}
 \begin{split}
 \frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}_j}  
@@ -485,24 +508,7 @@ Tổng quát ta có:
 \begin{equation}
 \frac{\partial J(\textbf{W})}{\partial \textbf{W}^{L}} = \textbf{a}^{L-1}[e_1,e_2,\ldots,e_C]=\textbf{a}^{L-1}\textbf{e}^{T}
 \end{equation}
-Vẫn với hàm mất mát như trên, nếu ta tính theo trình tự thuật toán ta có:
-\begin{equation}
-\begin{split}
-e_j^{(L)} &= \frac{\partial J(\textbf{W}) }{\partial \widehat{y_j}} \frac{\partial  \widehat{y_j}}{\partial \textbf{z}_j^{(L)}} \\
-&=-\sum_{j=1}^C \frac{ y_{j} \log \widehat{y}_{ij}}{ \partial  \widehat{y_j}} \frac{\partial  \widehat{y_j}}{\partial \textbf{z}_j^{(L)}} \\
-& = -\sum^{C}_{s=1}y_{s}\frac{\sum^C_{k=1}\exp{(z^{(L)}_k)}}{\exp{(z^{(L)}_j)}} \times \frac{\exp(z^{(L)}_j) \sum^C_{k=1}\exp(z^{(L)}_k) - (\exp(z^{(L)}_{j}))^2}{\left(\sum^C_{k=1}\exp(z^{(L)}_k)\right)^2}\\
-&= -\sum^{C}_{s=1}y_{s}\left(1-\frac{\exp(z^{(L)}_j)}{\sum^C_{k=1}\exp(z^{(L)}_k)}\right)\\
-& = -\sum^{C}_{s=1}y_{s} \left( 1-\widehat{y}_j \right)\\
-& =  -\sum^{C}_{s=1} ( y_{s} - y_{s}\widehat{y}_j) = \widehat{y}_j - y_{s},~\text{do đầu ra thực tế là dạng one-hot}
-\end{split}
-\end{equation}
-\begin{equation*}
-\begin{split}
-\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}_j} 
-&=e^{(L)}\frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(L)}}\\
-&=-\sum^{C}_{s=1}y_{s} \left( 1-\widehat{y}_j \right) \textbf{a}^{L-1}
-\end{split}
-\end{equation*}
+Chúng ta có thể thấy cách tính toán trên cũng cho kết quả với kết quả tại biểu thức \ref{eq:back_gra1}.
 \section{Overfitting}
 Overfitting là một hiệnn tượng không mong muốn thường gặp trong quá trình xây dựng mô hình, người xây dựng mô hình cần nắm được kỹ thuật để tránh hiện tượng này xảy ra.
 \subsection{Tổng quan}
