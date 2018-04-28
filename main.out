@@ -35,14 +35,14 @@
 \BOOKMARK [2][-]{subsection.2.8.2}{H\340m mt m\341t}{section.2.8}% 35
 \BOOKMARK [2][-]{subsection.2.8.3}{Cross-entropy}{section.2.8}% 36
 \BOOKMARK [2][-]{subsection.2.8.4}{X\342y dng h\340m mt m\341t}{section.2.8}% 37
-\BOOKMARK [2][-]{subsection.2.8.5}{Back-propagation v\340 ti u h\340m mt m\341t}{section.2.8}% 38
-\BOOKMARK [2][-]{subsection.2.8.6}{ Kh\341i nim}{section.2.8}% 39
-\BOOKMARK [2][-]{subsection.2.8.7}{Thut to\341n}{section.2.8}% 40
-\BOOKMARK [2][-]{subsection.2.8.8}{V\355 du}{section.2.8}% 41
-\BOOKMARK [1][-]{section.2.9}{Overfitting}{chapter.2}% 42
-\BOOKMARK [2][-]{subsection.2.9.1}{Tng quan}{section.2.9}% 43
-\BOOKMARK [2][-]{subsection.2.9.2}{Mi li\352n h gia overfitting v\340 gi\341 tri h\340m m\341t m\341t}{section.2.9}% 44
-\BOOKMARK [2][-]{subsection.2.9.3}{Regularization}{section.2.9}% 45
+\BOOKMARK [1][-]{section.2.9}{Back-propagation v\340 ti u h\340m mt m\341t}{chapter.2}% 38
+\BOOKMARK [2][-]{subsection.2.9.1}{ Kh\341i nim}{section.2.9}% 39
+\BOOKMARK [2][-]{subsection.2.9.2}{Thut to\341n}{section.2.9}% 40
+\BOOKMARK [2][-]{subsection.2.9.3}{V\355 du}{section.2.9}% 41
+\BOOKMARK [1][-]{section.2.10}{Overfitting}{chapter.2}% 42
+\BOOKMARK [2][-]{subsection.2.10.1}{Tng quan}{section.2.10}% 43
+\BOOKMARK [2][-]{subsection.2.10.2}{Mi li\352n h gia overfitting v\340 gi\341 tri h\340m m\341t m\341t}{section.2.10}% 44
+\BOOKMARK [2][-]{subsection.2.10.3}{Regularization}{section.2.10}% 45
 \BOOKMARK [0][-]{chapter.3}{Convolutional Nerual Networks}{}% 46
 \BOOKMARK [1][-]{section.3.1}{Tng quan}{chapter.3}% 47
 \BOOKMARK [1][-]{section.3.2}{B loc v\340 ca s trt}{chapter.3}% 48

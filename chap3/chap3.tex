@@ -407,9 +407,9 @@ Giả sử số lớp chúng ta cần phân loại là $C$, xét một cặp d�
 \label{eq:cost1}
 \begin{split}
 J_i(\textbf{W}) = J_i(\textbf{W};\textbf{x}_i,\textbf{y}_i) &=-\sum_{j=1}^C y_{ij} \log \widehat{y}_{ij}	\\
-&= -\sum_{j = 1}^C y_{ij}\log\left(\frac{\exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij})}{\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij})}\right)\\
-&= -\sum_{j=1}^C\left(y_{ji} \textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij}\log\left(\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij})\right)\right) \\
-&= -\sum_{j=1}^C y_{ji} \textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij} + \log\left(\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij})\right) 
+&= -\sum_{j = 1}^C y_{ij}\log\left(\frac{\exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij})}{\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_{i}\textbf{w}^{(L)T}_{ik})}\right)\\
+&= -\sum_{j=1}^C\left(y_{ji} \textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij}\log\left(\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ik})\right)\right) \\
+&= -\sum_{j=1}^C y_{ji} \textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij} + \log\left(\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ik})\right) 
 \end{split}
 \end{equation}
 với  $y_{ij}, \widehat{y}_{ij}$ lần lượt là phần tử thứ j của vector đầu ra thực tế (\textit{one-hot}) $\textbf{y}_i$ và vector đầu ra dự đoán $\widehat{\textbf{y}}_i$. \par
@@ -417,11 +417,11 @@ với  $y_{ij}, \widehat{y}_{ij}$ lần lượt là phần tử thứ j của ve
 Khi dữ liệu là một tập hợp $(\textbf{x}_i,\textbf{y}_i)$, $i=1,2,...,N$ thì hàm mất mát cho \textit{softmax} được tính như sau
 \begin{equation}
 \label{eq:cost2}
-J(\textbf{W};\textbf{X},\textbf{Y}) = -\frac{1}{N} \sum_{i=1}^N \left(  \sum_{j=1}^C y_{ji} \textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij} + \log\left(\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij})\right) \right)
+J(\textbf{W};\textbf{X},\textbf{Y}) = -\frac{1}{N} \sum_{i=1}^N \left(  \sum_{j=1}^C y_{ji} \textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ij} + \log\left(\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{ik})\right) \right)
 \end{equation} 
 
 
-\subsection{Back-propagation và tối ưu hàm mất mát}
+\section{Back-propagation và tối ưu hàm mất mát}
 \subsection{ Khái niệm}
 
 Truyền ngược là Backpropagation, là một từ viết tắt cho "backward propagation of errors" tức là "truyền ngược của sai số", là một phương pháp phổ biến để \textit{huấn luyện} các mạng thần kinh nhân tạo được sử dụng \textit{kết hợp} với một \textit{phương pháp tối ưu hóa} như gradient descent, momentum, nesterov accelerated gradient, adam. Nhìn chung các phương pháp này tính toán gradient của hàm tổn thất với tất cả các trọng số có liên quan trong mạng nơ-ron đó và sử dụng nó để cập nhật các trọng số, để cực tiểu hóa hàm tổn thất. Tùy theo mỗi phương pháp sẽ có các cách cập nhật trọng số khác nhau.
@@ -441,14 +441,14 @@ Truyền ngược là Backpropagation, là một từ viết tắt cho "backward
 
 \STATE	$\textbf{e}^{(L)} = \frac{\partial J(\widehat{\textbf{y}},\textbf{y}_{i}) }{\partial \widehat{\textbf{y}}} \frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(L)}}$
 
-\STATE $\nabla_{\textbf{w}^{(L)}_j}J = \textbf{e}^{(L)} \frac{\partial \textbf{z}^{(L)}}{\partial \textbf{w}^{(L)}_j} = \textbf{a}^{(L-1)}_{j}\textbf{e}^{(L)}$ , \textit{với mỗi $j$; $j =1,\ldots, m;$} m là số units trong layer L \\
+\STATE $\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}_j} = \textbf{e}^{(L)} \frac{\partial \textbf{z}^{(L)}}{\partial \textbf{w}^{(L)}_j} = \textbf{a}^{(L-1)}_{j}\textbf{e}^{(L)}$ , \textit{với mỗi $j$; $j =1,\ldots, m;$} m là số units trong layer L \\
 	\FOR {$k=L-1;k \ge 1;k++$}
 		\STATE $\textbf{e}^{(k)}= \textbf{e}^{(k+1)} \frac{\partial  {\textbf{z}^{(k+1)}}}{\partial \textbf{a}^{k}} \frac{\partial\textbf{a}^{k}}{\partial\textbf{z}^{k}} $
-		\STATE $\nabla_{\textbf{w}^{(k)}_{j}}J =\textbf{e}^{(k)} \frac{\partial \textbf{z}^{(k)}}{\partial \textbf{w}^{(k)}_j} = \textbf{a}^{(k-1)}_{j}\textbf{e}^{(k)}$,  \textit{với mỗi $j$; $j =1,\ldots, m;$} m là số units trong layer $k$ \\
+		\STATE $\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{k}_j}  =\textbf{e}^{(k)} \frac{\partial \textbf{z}^{(k)}}{\partial \textbf{w}^{(k)}_j} = \textbf{a}^{(k-1)}_{j}\textbf{e}^{(k)}$,  \textit{với mỗi $j$; $j =1,\ldots, m;$} m là số units trong layer $k$ \\
 		
 	\ENDFOR
 	\FOR {$k=L;k \ge 1;k++$} % khong cho vao phong for tren duoc do việc cập nhật có liên quan đến w
-	\STATE 	\textit{cập nhật $\textbf{w}^{(k)}_j$ theo gradient $\nabla_{\textbf{w}^{(k)}_j}J$ bằng một trong các cách tối ưu như: gradient descent, adam, momentum,... với mỗi $j$; $j =1,\ldots, m$; $m$ là số units trong layer $k$}
+	\STATE 	\textit{cập nhật $\textbf{w}^{(k)}_j$ theo gradient $\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{k}_j} $ bằng một trong các cách tối ưu như: gradient descent, adam, momentum,... với mỗi $j$; $j =1,\ldots, m$; $m$ là số units trong layer $k$}
 	
 	\ENDFOR
 \ENDFOR
@@ -457,12 +457,12 @@ Truyền ngược là Backpropagation, là một từ viết tắt cho "backward
 
 
 \subsection{Ví dụ}
-Tiếp tục ví dụ với cấu trúc mạng nơ-ron như Hình \ref{fig:baitoan}, xét một cặp dữ liệu $(\textbf{x}_i,\textbf{y}_i)$ với $\textbf{y}_i$ là dạng \textit{one-hot} tại đầu ra thực tế thứ $i$, bằng quá trình \textit{feedforward }chúng ta đã có: 
+Tiếp tục ví dụ với cấu trúc mạng nơ-ron như Hình \ref{fig:baitoan}, xét một cặp dữ liệu $(\textbf{x}_i,\textbf{y}_i)$ với $\textbf{y}_i$ là dạng \textit{one-hot} tại đầu ra thực tế thứ $i$. Vì ta hiện ta chỉ xét một cặp dữ liệu vì thế tôi xin được lược bỏ chỉ số $i$ tại các công thức dưới đây. Theo như ta tính bằng \textit{feedforward }chúng ta đã có: 
 
 
 \begin{itemize}
-	\item[] $\textbf{a}^{(0)}=\textbf{x}$
-	\item[]  $\textbf{z}^{(1)}_{1 \times 3}=\textbf{x}_{1\times 2}\textbf{W}^{(1)T}_{2{\times}3}$
+	\item[] $\textbf{a}^{(0)}=\textbf{x}_{1\times2}$
+	\item[]  $\textbf{z}^{(1)}_{1 \times 3}=\textbf{a}\textbf{W}^{(1)T}_{2{\times}3}$
 	\item[] $\textbf{a}^{(1)}_{1 \times 3}=\max(0,\textbf{z}^{(1)})$
 	
 	\item[] $\textbf{z}^{(2)}_{1\times 3}=\textbf{a}^{(1)}_{1 \times 3}\textbf{W}^{(2)T}_{3{{\times}}3 }$
@@ -470,39 +470,39 @@ Tiếp tục ví dụ với cấu trúc mạng nơ-ron như Hình \ref{fig:baito
 	\item[] $\widehat{\textbf{y}}_{1\times 3} = \frac{\exp({\textbf{z}^{(2)}})}{\sum^{3}_{j=1}{\exp({\textbf{z}^{(2)}_j})}}$.
 
 \end{itemize}
-Ta sẽ thực hiện theo Thuật toán \ref{al:backward}, để thuận tiện cho việc theo dõi tôi xin lược bỏ số thứ tự của dữ liệu ở các biến đổi dưới đây.\\
-Tính $\nabla_{\textbf{w}^{(L)}_j}J $ với $L=2$
+Để thực hiện thuật toán backpropagation có nghĩa là chúng ta đi tìm các giá trị sau: $\frac{\partial J_i(\textbf{W})}{\partial \textbf{W}^{(2)}},\frac{\partial J_i(\textbf{W})}{\partial \textbf{W}^{(1)}}$. Vì ta sử dụng hàm activation ở layer cuối là softmax vì thế ta có hàm mất mát là biểu thức \ref{eq:cost1}. Tính $\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}} $
 \begin{equation}
 \begin{split}
-\nabla_{\textbf{w}^{(L)}_j}J  &= \frac{\partial J(\widehat{\textbf{y}},\textbf{y}) }{\partial \widehat{\textbf{y}}} \frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(L)}} \frac{\partial \textbf{z}^{(L)}}{\partial \textbf{w}^{(L)}_j}\\
-&= \frac{\partial J(\widehat{\textbf{y}},\textbf{y}) }{\partial \textbf{w}^{(L)}_j}\\
+\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}_j}  
 &=\frac{\partial \left( -\sum_{j=1}^C y_{j} \textbf{a}^{(L-1)}\textbf{w}^{(L)T}_{j} + \log\left(\sum_{k=1}^C \exp(\textbf{a}^{(L-1)}_i\textbf{w}^{(L)T}_{j})\right) \right)}{\partial \textbf{w}^{(L)}_j}\\
 &=-y_{j}\textbf{a}^{(L-1)} + 
 \frac{\exp(\textbf{w}_j^{(L-1)T}\textbf{a}^{(L-1)})}{\sum_{k = 1}^C \exp(\textbf{w}_k^{(L-1)T}\textbf{a}^{(L-1)})}\textbf{a}^{(L-1)} \\
-&= -y_{j}\textbf{a}^{(L-1)} + a^{(L)} \textbf{a}^{(L-1)}_{j}= \textbf{a}^{(L-1)} (a^{(L)}_{j} - y_{j}) \\
-&= e^{(L)}_{j}\textbf{a}^{(L-1)} ~(\text{với}~ e^{L}_{j} = a^{(L-1)}_{j} - y_{j})
+&= -y_{j}\textbf{a}^{(L-1)} + a^{(L)}_{j} \textbf{a}^{(L-1)}= \textbf{a}^{(L-1)} (a^{(L)}_{j} - y_{j})~ \text{với} ~a_j^{L} = \widehat{y}_j \\
+&= e^{(L)}_{j}\textbf{a}^{(L-1)} ~(\text{với}~ e^{L}_{j} = a^{(L)}_{j} - y_{j})
 \end{split}
 \end{equation} 
-Tiếp theo ta tính các layer trước với hàm activation là hàm ReLU
+Tổng quát ta có:
+\begin{equation}
+\frac{\partial J(\textbf{W})}{\partial \textbf{W}^{L}} = \textbf{a}^{L-1}[e_1,e_2,\ldots,e_C]=\textbf{a}^{L-1}\textbf{e}^{T}
+\end{equation}
+Vẫn với hàm mất mát như trên, nếu ta tính theo trình tự thuật toán ta có:
 \begin{equation}
 \begin{split}
-\nabla_{\textbf{w}^{(l)}_j}J  &= \frac{\partial J(\widehat{\textbf{y}},\textbf{y}) }{\partial \widehat{\textbf{y}}} \frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(l)}} \frac{\partial \textbf{z}^{(l)}}{\partial \textbf{w}^{(l)}_j}\\
-&= \frac{\partial J(\widehat{\textbf{y}},\textbf{y}) }{\partial \textbf{w}^{(l)}_j}\\
-&=\frac{\partial \left( -\sum^C_{j=1} y_{j} \textbf{a}^{(l-1)}\textbf{w}^{(l)T}_{j} + \log\left(\sum_{k=1}^C \exp(\textbf{a}^{(l-1)}_i\textbf{w}^{(l)T}_{j})\right) \right)}{\partial \textbf{w}^{(l)}_j}\\
+e_j^{(L)} &= \frac{\partial J(\textbf{W}) }{\partial \widehat{y_j}} \frac{\partial  \widehat{y_j}}{\partial \textbf{z}_j^{(L)}} \\
+&=-\sum_{j=1}^C \frac{ y_{j} \log \widehat{y}_{ij}}{ \partial  \widehat{y_j}} \frac{\partial  \widehat{y_j}}{\partial \textbf{z}_j^{(L)}} \\
+& = -\sum^{C}_{s=1}y_{s}\frac{\sum^C_{k=1}\exp{(z^{(L)}_k)}}{\exp{(z^{(L)}_j)}} \times \frac{\exp(z^{(L)}_j) \sum^C_{k=1}\exp(z^{(L)}_k) - (\exp(z^{(L)}_{j}))^2}{\left(\sum^C_{k=1}\exp(z^{(L)}_k)\right)^2}\\
+&= -\sum^{C}_{s=1}y_{s}\left(1-\frac{\exp(z^{(L)}_j)}{\sum^C_{k=1}\exp(z^{(L)}_k)}\right)\\
+& = -\sum^{C}_{s=1}y_{s} \left( 1-\widehat{y}_j \right)\\
+& =  -\sum^{C}_{s=1} ( y_{s} - y_{s}\widehat{y}_j) = \widehat{y}_j - y_{s},~\text{do đầu ra thực tế là dạng one-hot}
 \end{split}
 \end{equation}
-\begin{equation}
+\begin{equation*}
 \begin{split}
-\textbf{e}^{(L)} &= \frac{\partial J(\widehat{\textbf{y}},\textbf{y}) }{\partial \widehat{\textbf{y}}} \frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(L)}} \\
-& = -\sum^{C}_{j=1}y_{j}\frac{\sum^C_{k=1}\exp{(z^{(L)}_k)}}{\exp{(z^{(L)}_j)}} \frac{\exp(z^{(L)}_j) \sum^C_{k=1}\exp(z^{(L)}_k) - \left(\exp(z^{(L)}_{j})\right)^2}{\left(\sum^C_{k=1}\exp(z^{(L)}_k)\right)^2}\\
-&= -\sum^{C}_{j=1}y_{j}\left(1-\frac{\exp(z^{(L)}_j)}{\sum^C_{k=1}\exp(z^{(L)}_k)}\right)\\
-& = -\sum^{C}_{j=1}y_{j} \left( 1-\widehat{y}_j \right)\\
-\nabla_{\textbf{w}^{(L)}}J
-&=\textbf{e}^{(L)}\frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(L)}}\\
-&=-\sum^{C}_{j=1}y_{j} \left( 1-\widehat{y}_j \right) \textbf{a}^{L-1}
+\frac{\partial J(\textbf{W})}{\partial \textbf{w}^{L}_j} 
+&=e^{(L)}\frac{\partial  \widehat{\textbf{y}}}{\partial \textbf{z}^{(L)}}\\
+&=-\sum^{C}_{s=1}y_{s} \left( 1-\widehat{y}_j \right) \textbf{a}^{L-1}
 \end{split}
-\end{equation}
-
+\end{equation*}
 \section{Overfitting}
 Overfitting là một hiệnn tượng không mong muốn thường gặp trong quá trình xây dựng mô hình, người xây dựng mô hình cần nắm được kỹ thuật để tránh hiện tượng này xảy ra.
 \subsection{Tổng quan}
