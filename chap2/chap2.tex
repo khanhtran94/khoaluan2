@@ -155,24 +155,24 @@ $\frac{dz}{dx} = \frac{dz}{dy} \frac{dy}{dz}$ = $f'(y)g'(x)$ = $f'(g(x)).g'(x)$
 \end{center}
 
 Ví dụ: Tính đạo hàm của hàm số $h=(x^2+5)^2$\par
- Đặt $g(x) = x^2 +5$ thì ta có $f(g) = g^2$, do đó $h'(x) = f'(g(x)).g'(x) = 2g2x= 4(x^2 +5)x$\\ \par
-\textbf{Đạo hàm riêng của hàm hợp}: Giả sử ta có hàm số $f(u,v)$ trong đó $u(x,y)$ , $v(x,y)$ là các hàm số  theo biến $x,y$ và $f$ có đạo hàm riêng theo $u,v$ và $u,v$ có đạo hàm riêng theo $x,y$ thì ta có đạo hàm riêng của $f$ theo $x,y$ như sau:
-\begin{align*}
-	\begin{cases}
-        f'_{x} = f'_{u}u'_{x} +f'_{v}v'_{x}\\
-       f'_{y} = f'_{u}u'_{y} +f'_{v}v'_{y}
-    \end{cases}
-\end{align*}
-một cách biểu diễn khác
-\begin{align}
-	\begin{cases}
-		\frac{\partial f}{\partial x} = 
-		\frac{\partial f}{\partial u}\frac{\partial u}{\partial x} + 
-		\frac{\partial f}{\partial v}\frac{\partial v}{\partial x}\\[5mm]
-		\frac{\partial f}{\partial y} = \frac{\partial f}{\partial u}\frac{\partial u}{\partial y} +
-		 \frac{\partial f}{\partial v}\frac{\partial v}{\partial y}
-	\end{cases}
-\end{align}
+ Đặt $g(x) = x^2 +5$ thì ta có $f(g) = g^2$, do đó $h'(x) = f'(g(x)).g'(x) = 2g2x= 4(x^2 +5)x$\par
+%\textbf{Đạo hàm riêng của hàm hợp}: Giả sử ta có hàm số $f(u,v)$ trong đó $u(x,y)$ , $v(x,y)$ là các hàm số  theo biến $x,y$ và $f$ có đạo hàm riêng theo $u,v$ và $u,v$ có đạo hàm riêng theo $x,y$ thì ta có đạo hàm riêng của $f$ theo $x,y$ như sau:
+%\begin{align*}
+%	\begin{cases}
+%        f'_{x} = f'_{u}u'_{x} +f'_{v}v'_{x}\\
+%       f'_{y} = f'_{u}u'_{y} +f'_{v}v'_{y}
+%    \end{cases}
+%\end{align*}
+%một cách biểu diễn khác
+%\begin{align}
+%	\begin{cases}
+%		\frac{\partial f}{\partial x} = 
+%		\frac{\partial f}{\partial u}\frac{\partial u}{\partial x} + 
+%		\frac{\partial f}{\partial v}\frac{\partial v}{\partial x}\\[5mm]
+%		\frac{\partial f}{\partial y} = \frac{\partial f}{\partial u}\frac{\partial u}{\partial y} +
+%		 \frac{\partial f}{\partial v}\frac{\partial v}{\partial y}
+%	\end{cases}
+%\end{align}
 \section{Ước lượng tham số bằng cực đại khả dĩ}
 Ước lượng hợp lý cực đại (có người gọi là khả năng cực đại, tiếng Anh thường được viết là MLE, gọi tắt từ Maximum-Likelihood Estimation) là một kỹ thuật trong thống kê dùng để ước lượng giá trị tham số của một mô hình xác suất dựa trên những dữ liệu có được. Phương pháp này được đĩnh nghĩa như sau:\par
 Giả sử $X=x_1,x_2,....,x_n$ là tập $n$ quan sát và $Y=y_1,y_2,...,y_n$ là số nhãn của quan sát; $x,y$ là hai biến độc lập ngẫu nhiên. Ta cần phải tìm tham số $\theta$ để biểu thức sau đây đạt được giá trị lớn nhất
