@@ -782,18 +782,22 @@ Tổng quát hóa ta có:
 \frac{\partial J_i(\textbf{W})}{\partial \textbf{W}^{(1)}} = (\textbf{a}^{(2)}-\textbf{y})\textbf{W}^{(2)T} 1 \textbf{a}^{(0)} = \textbf{a}^{(0)}\textbf{e}^{(1)T}
 \end{equation}
 Như vậy với tập dữ liệu $N$ quan sát thì chúng ta có thể như sau:
-\begin{eqnarray}
-\frac{\partial J(\textbf{W})}{\partial \textbf{W}^{(2)}} &=&\sum^{N}_{i=1} \textbf{a}^{(2-1)}_i\textbf{e}^{(2)T}_i = \textbf{A}^{(2-1)}\textbf{E}^{(2)T}\\
-\frac{\partial J(\textbf{W})}{\partial \textbf{W}^{(1)}} &=& \sum^{N}_{i=1} \textbf{a}^{(0)}_i \textbf{e}^{(1)T}_i = \textbf{X}\textbf{E}^{(1)T}
-\end{eqnarray}
+\begin{equation}
+\begin{split}
+\frac{\partial J(\textbf{W})}{\partial \textbf{W}^{(2)}} &=\sum^{N}_{i=1} \textbf{a}^{(2-1)}_i\textbf{e}^{(2)T}_i = \textbf{A}^{(2-1)}\textbf{E}^{(2)T}\\
+\frac{\partial J(\textbf{W})}{\partial \textbf{W}^{(1)}} &= \sum^{N}_{i=1} \textbf{a}^{(0)}_i \textbf{e}^{(1)T}_i = \textbf{X}\textbf{E}^{(1)T}
+\end{split}
+\end{equation}
 với $\textbf{E}^{(2)} = \textbf{A}^{(2)}-\textbf{Y}, ~ \textbf{E}^{(1)} = \textbf{E}^{(2)}\textbf{W}^{(2)T}$
 Bước tiếp theo là sử dụng kết quả vừa tìm được để tối ưu hàm mất mát bằng các phương pháp tối ưu tôi đã trình bày ở phần \ref{sec:toiuu}. Ví dụ tôi chọn phương pháp gradient descent, chúng ta có:
-\begin{eqnarray}
-\textbf{E}^{(2)} &=& \textbf{A}^{(2)}-\textbf{Y}\\
-\textbf{W}^{2} &=& \textbf{W}^{(2)} + \eta \textbf{A}^{(2-1)}\textbf{E}^{(2)T}\\
- \textbf{E}^{(1)} &=& \textbf{E}^{(2)}\textbf{W}^{(2)T}\\
-\textbf{W}^{2} &=& \textbf{W}^{(2)} + \eta \textbf{X}\textbf{E}^{(1)T}\\
-\end{eqnarray}
+\begin{equation}
+\begin{split}
+\textbf{E}^{(2)} &= \textbf{A}^{(2)}-\textbf{Y}\\
+\textbf{W}^{(2)} &=\textbf{W}^{(2)} + \eta \textbf{A}^{(2-1)}\textbf{E}^{(2)T} \\
+ \textbf{E}^{(1)} &= \textbf{E}^{(2)}\textbf{W}^{(2)T}\\
+\textbf{W}^{(1)} &= \textbf{W}^{(1)} + \eta \textbf{X}\textbf{E}^{(1)T}\\
+\end{split}
+\end{equation}
 
 
 \end{enumerate}
