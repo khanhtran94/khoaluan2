@@ -1,0 +1,41 @@
+\BOOKMARK [0][-]{chapter.1}{C S To\341n Hoc}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Ma trn}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{\320inh ngh\232a}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Ph\351p cng ma trn}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Ph\351p nh\342n ma trn vi ma trn}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{Ma trn chuyn vi}{section.1.1}% 6
+\BOOKMARK [1][-]{section.1.2}{\320ao h\340m}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.2.1}{\320inh ngh\232a}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.2}{\320ao h\340m ri\352ng}{section.1.2}% 9
+\BOOKMARK [2][-]{subsection.1.2.3}{\320ao h\340m h\340m hp \(Chain rule\)}{section.1.2}% 10
+\BOOKMARK [1][-]{section.1.3}{c lng tham s bng cc ai kha d\232}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.4}{Mt v\340i phng ph\341p ti u}{chapter.1}% 12
+\BOOKMARK [2][-]{subsection.1.4.1}{Gradient descent}{section.1.4}% 13
+\BOOKMARK [2][-]{subsection.1.4.2}{Gradient descents vi Momentum}{section.1.4}% 14
+\BOOKMARK [2][-]{subsection.1.4.3}{RMSprop}{section.1.4}% 15
+\BOOKMARK [2][-]{subsection.1.4.4}{Adam}{section.1.4}% 16
+\BOOKMARK [0][-]{chapter.2}{Mang N-ron}{}% 17
+\BOOKMARK [1][-]{section.2.1}{Tng quan}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.1.1}{\320inh ngh\232a}{section.2.1}% 19
+\BOOKMARK [2][-]{subsection.2.1.2}{C\341c phng ph\341p hoc}{section.2.1}% 20
+\BOOKMARK [1][-]{section.2.2}{Cu tao cua n-ron}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.2.1}{N-ron sinh hoc}{section.2.2}% 22
+\BOOKMARK [2][-]{subsection.2.2.2}{N-ron nh\342n tao}{section.2.2}% 23
+\BOOKMARK [1][-]{section.2.3}{Mang n-ron nhiu lp}{chapter.2}% 24
+\BOOKMARK [2][-]{subsection.2.3.1}{Kin tr\372c chung}{section.2.3}% 25
+\BOOKMARK [2][-]{subsection.2.3.2}{Mang lan truyn thng}{section.2.3}% 26
+\BOOKMARK [2][-]{subsection.2.3.3}{H\340m mt m\341t}{section.2.3}% 27
+\BOOKMARK [2][-]{subsection.2.3.4}{Thut to\341n lan truyn ngc v\340 cp nht tham s}{section.2.3}% 28
+\BOOKMARK [2][-]{subsection.2.3.5}{Overfitting}{section.2.3}% 29
+\BOOKMARK [2][-]{subsection.2.3.6}{D liu}{section.2.3}% 30
+\BOOKMARK [1][-]{section.2.4}{Mang n-ron t\355ch chp}{chapter.2}% 31
+\BOOKMARK [2][-]{subsection.2.4.1}{Tng quan}{section.2.4}% 32
+\BOOKMARK [2][-]{subsection.2.4.2}{Lp t\355ch chp - Convolutional layer}{section.2.4}% 33
+\BOOKMARK [2][-]{subsection.2.4.3}{Lp giam s chiu - pooling layer}{section.2.4}% 34
+\BOOKMARK [2][-]{subsection.2.4.4}{Lp Fully-Connected \(Fully-Connected layer\)}{section.2.4}% 35
+\BOOKMARK [1][-]{section.2.5}{Tng kt}{chapter.2}% 36
+\BOOKMARK [0][-]{chapter.3}{ng Dung Convolutional Neural Network V\340o B\340i To\341n Nhn Din Bin B\341o Giao Th\364ng }{}% 37
+\BOOKMARK [1][-]{section.3.1}{D liu}{chapter.3}% 38
+\BOOKMARK [2][-]{subsection.3.1.1}{Th\364ng tin d liu}{section.3.1}% 39
+\BOOKMARK [2][-]{subsection.3.1.2}{Tang cng d liu}{section.3.1}% 40
+\BOOKMARK [2][-]{subsection.3.1.3}{Chun h\363a d liu}{section.3.1}% 41

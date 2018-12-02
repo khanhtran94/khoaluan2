@@ -1,0 +1,34 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces \IeC {\DJ }\IeC {\`\ocircumflex } th\IeC {\d i} \relax }}{12}{figure.caption.5}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces H\IeC {\d o}c c\IeC {\'o} gi\IeC {\'a}m s\IeC {\'a}t\relax }}{15}{figure.caption.6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Minh h\IeC {\d o}a c\IeC {\'\acircumflex }u t\IeC {\d a}o n\IeC {\ohorn }-ron sinh h\IeC {\d o}c\relax }}{15}{figure.caption.7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces C\IeC {\'\acircumflex }u tr\IeC {\'u}c c\IeC {\h u}a m\IeC {\d \ocircumflex }t n\IeC {\ohorn }-ron, ngu\IeC {\`\ocircumflex }n: https://cs231n.github.io/\relax }}{16}{figure.caption.8}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces H\IeC {\`a}m ReLU\relax }}{18}{figure.caption.9}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces H\IeC {\`a}m sigmoid\relax }}{18}{figure.caption.10}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces V\IeC {\'\i } d\IeC {\d u} h\IeC {\`a}m softmax (ngu\IeC {\`\ocircumflex }n: machinelearningcoban.com)\relax }}{19}{figure.caption.11}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces C\IeC {\'\acircumflex }u tr\IeC {\'u}c chung c\IeC {\h u}a m\IeC {\d a}ng n\IeC {\ohorn }-ron\relax }}{19}{figure.caption.12}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces M\IeC {\d a}ng neural cho b\IeC {\`a}i to\IeC {\'a}n \relax }}{21}{figure.caption.13}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces overfitting v\IeC {\`a} underfitting\relax }}{27}{figure.caption.14}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Early stopping\relax }}{29}{figure.caption.15}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Dropout v\IeC {\'\ohorn }i p =0.5\relax }}{30}{figure.caption.16}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Ki\IeC {\'\ecircumflex }n tr\IeC {\'u}c hai m\IeC {\d a}ng\relax }}{31}{figure.caption.17}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {m\IeC {\d a}ng n\IeC {\ohorn }ron th\IeC {\^o}ng th\IeC {\uhorn }\IeC {\`\ohorn }ng}}}{31}{subfigure.12.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {m\IeC {\d a}ng n\IeC {\ohorn }ron t\IeC {\'\i }ch ch\IeC {\d \acircumflex }p}}}{31}{subfigure.12.2}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces v\IeC {\'\i } d\IeC {\d u} v\IeC {\`\ecircumflex } ki\IeC {\'\ecircumflex }n tr\IeC {\'u}c c\IeC {\h u}a ConvNets\relax }}{31}{figure.caption.18}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces T\IeC {\'\i }nh to\IeC {\'a}n trong l\IeC {\'\ohorn }p t\IeC {\'\i }ch ch\IeC {\d \acircumflex }p\relax }}{32}{figure.caption.19}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{32}{subfigure.14.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{32}{subfigure.14.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{32}{subfigure.14.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{32}{subfigure.14.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{32}{subfigure.14.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {}}}{32}{subfigure.14.6}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces B\IeC {\d \ocircumflex } l\IeC {\d o}c - filter\relax }}{32}{figure.caption.20}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Sliding window\relax }}{33}{figure.caption.21}
+\contentsline {figure}{\numberline {2.17}{\ignorespaces V\IeC {\'\i } d\IeC {\d u} v\IeC {\`\ecircumflex } t\IeC {\'\i }nh to\IeC {\'a}n k\IeC {\'\i }ch th\IeC {\uhorn }\IeC {\'\ohorn }c \IeC {\dj }\IeC {\`\acircumflex }u ra\relax }}{34}{figure.caption.22}
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Minh h\IeC {\d o}a gi\IeC {\h a}m s\IeC {\'\ocircumflex } chi\IeC {\`\ecircumflex }u\relax }}{35}{figure.caption.23}
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Max pooling\relax }}{35}{figure.caption.24}
+\contentsline {figure}{\numberline {2.20}{\ignorespaces V\IeC {\'\i } d\IeC {\d u} c\IeC {\'\acircumflex }u tr\IeC {\'u}c m\IeC {\d a}ng CNNs\relax }}{36}{figure.caption.25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Danh s\IeC {\'a}ch c\IeC {\'a}c lo\IeC {\d a}i bi\IeC {\h \ecircumflex }n b\IeC {\'a}o\relax }}{37}{figure.caption.26}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Th\IeC {\'\ocircumflex }ng k\IeC {\^e} d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u hu\IeC {\'\acircumflex }n luy\IeC {\d \ecircumflex }n\relax }}{38}{figure.caption.27}
